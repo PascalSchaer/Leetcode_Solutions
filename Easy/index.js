@@ -45,3 +45,62 @@ console.log(twoSum(nums2, target2)); // Output should be [1, 6]
 
 
 // 2 *********************
+
+
+// Given a string s containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid.
+
+// An input string is valid if:
+
+// Open brackets must be closed by the same type of brackets.
+// Open brackets must be closed in the correct order.
+// Every close bracket has a corresponding open bracket of the same type.
+
+
+/**
+ * @param {string} s
+ * @return {boolean}
+ */
+function isValid(s) {
+    // Declare an empty array to use as a stack
+    let stack = [];
+
+    // Loop through each character in the input string
+    for (let i = 0; i < s.length; i++) {
+        // Get the current character
+        let currentChar = s[i];
+
+        // If the current character is an opening bracket, push it onto the stack
+        if (currentChar === '(' || currentChar === '{' || currentChar === '[') {
+            stack.push(currentChar);
+        }
+        // If the current character is a closing bracket
+        else {
+            // Pop the last element from the stack (this should be the matching opening bracket)
+            let lastElementInStack = stack.pop();
+
+            // Check if the popped element actually matches with the current closing bracket
+            if (currentChar === ')' && lastElementInStack !== '(') {
+                return false;
+            }
+
+            if (currentChar === '}' && lastElementInStack !== '{') {
+                return false;
+            }
+
+            if (currentChar === ']' && lastElementInStack !== '[') {
+                return false;
+            }
+        }
+    }
+
+    // If the stack is empty at this point, the brackets are balanced
+    if (stack.length === 0) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
+// Test the function
+console.log(isValid("()"));    // Should print true
+console.log(isValid("()[]{}"));// Should print
