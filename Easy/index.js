@@ -104,3 +104,41 @@ function isValid(s) {
 // Test the function
 console.log(isValid("()"));    // Should print true
 console.log(isValid("()[]{}"));// Should print
+
+
+
+// 3 **********************
+
+// You are given an array prices where prices[i] is the price of a given stock on the ith day.
+
+// You want to maximize your profit by choosing a single day to buy one stock and choosing a different day in the future to sell that stock.
+
+// Return the maximum profit you can achieve from this transaction. If you cannot achieve any profit, return 0.
+
+
+
+/**
+ * @param {number[]} prices
+ * @return {number}
+ */
+function maxProfit(prices) {
+    let minPrice = Number.POSITIVE_INFINITY;
+    let maxProfit = 0;
+
+    for (let price of prices) {
+        // Update minPrice if a new minimum price is found
+        minPrice = Math.min(minPrice, price);
+
+        // Update maxProfit if a new maximum profit is found
+        maxProfit = Math.max(maxProfit, price - minPrice);
+    }
+
+    return maxProfit;
+}
+
+// Test the function
+const prices1 = [7, 1, 5, 3, 6, 4];
+console.log(maxProfit(prices1));  // Output should be 5 (buy at 1 and sell at 6)
+
+const prices2 = [7, 6, 4, 3, 1];
+console.log(maxProfit(prices2));  // Output should be 0 (no profitable transaction possible)
