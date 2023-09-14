@@ -176,3 +176,37 @@ function hasCycle(head) {
     // If the loop terminated, there is no cycle
     return false;
 }
+
+
+
+// 5 **********************
+
+// Given an integer array nums, return true if any value appears at least twice in the array, and return false if every element is distinct.
+
+/**
+ * @param {number[]} nums
+ * @return {boolean}
+ */
+var containsDuplicate = function(nums) {
+    let uniqueSet = new Set();
+
+    for (let num of nums) {
+        //check if the element is already in the Set
+        // if it is, return true
+        if (uniqueSet.has(num)) {
+            return true;
+        } else {
+            //add it to the set to keep track of it
+            uniqueSet.add(num)
+        }
+        // if not, return false
+    }
+        return false;
+
+};
+
+console.log(containsDuplicate([1, 2, 3, 4, 5]));
+console.log(containsDuplicate([1, 2, 3, 1]));
+console.log(containsDuplicate([1, 1, 2, 2, 3]));
+console.log(containsDuplicate([1, 2, 3, 4, 5, 1]));
+console.log(containsDuplicate([]));
