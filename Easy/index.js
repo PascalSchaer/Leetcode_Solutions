@@ -142,3 +142,37 @@ console.log(maxProfit(prices1));  // Output should be 5 (buy at 1 and sell at 6)
 
 const prices2 = [7, 6, 4, 3, 1];
 console.log(maxProfit(prices2));  // Output should be 0 (no profitable transaction possible)
+
+
+
+
+// 4 ***********************
+
+// Given head, the head of a linked list, determine if the linked list has a cycle in it.
+
+// There is a cycle in a linked list if there is some node in the list that can be reached again by continuously following the next pointer. Internally, pos is used to denote the index of the node that tail's next pointer is connected to. Note that pos is not passed as a parameter.
+
+// Return true if there is a cycle in the linked list. Otherwise, return false.
+
+
+function hasCycle(head) {
+    // Initialize two pointers, slow and fast, both at the head of the linked list
+    let slow = head;
+    let fast = head;
+
+    // Traverse the linked list using a loop
+    while (fast !== null && fast.next !== null) {
+        // Move the slow pointer one step
+        slow = slow.next;
+        // Move the fast pointer two steps
+        fast = fast.next.next;
+
+        // Check if the fast and slow pointers have met
+        if (fast === slow) {
+            return true; // There is a cycle
+        }
+    }
+
+    // If the loop terminated, there is no cycle
+    return false;
+}
