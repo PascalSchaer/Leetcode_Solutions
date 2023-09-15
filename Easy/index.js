@@ -187,7 +187,7 @@ function hasCycle(head) {
  * @param {number[]} nums
  * @return {boolean}
  */
-var containsDuplicate = function(nums) {
+var containsDuplicate = function (nums) {
     let uniqueSet = new Set();
 
     for (let num of nums) {
@@ -201,7 +201,7 @@ var containsDuplicate = function(nums) {
         }
         // if not, return false
     }
-        return false;
+    return false;
 
 };
 
@@ -210,3 +210,48 @@ console.log(containsDuplicate([1, 2, 3, 1]));
 console.log(containsDuplicate([1, 1, 2, 2, 3]));
 console.log(containsDuplicate([1, 2, 3, 4, 5, 1]));
 console.log(containsDuplicate([]));
+
+
+// 6 *********************
+
+// Given an integer x, return true if x is a
+// palindrome
+// , and false otherwise.
+
+/**
+ * @param {number} x
+ * @return {boolean}
+ */
+var isPalindrome = function (x) {
+
+
+    const str = x.toString();
+
+    let left = 0;
+    let right = str.length - 1;
+
+    while (left < right) {
+        if (str[left] !== str[right]) {
+            return false;
+        }
+        left++;
+        right--;
+    }
+    return true;
+
+};
+
+
+
+// Examples
+const num = 121;
+const result = isPalindrome(num);
+console.log(result); // true
+
+const num1 = 1234321
+const result1 = isPalindrome(num1);
+console.log(result1);
+
+const num2 = 234266
+const result2 = isPalindrome(num2);
+console.log(result2);
